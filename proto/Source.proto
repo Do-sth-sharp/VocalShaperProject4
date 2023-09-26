@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package org.vocalsharp.vocalshaper.vsp4;
+
+message Source {
+	enum Type {
+		AUDIO = 0;
+		MIDI = 1;
+		SYNTH = 2;
+	}
+
+	required Type type = 1;
+	required string path = 2;
+	required string name = 3;
+}
+
+message SourceList {
+	repeated Source sources = 1;
+}

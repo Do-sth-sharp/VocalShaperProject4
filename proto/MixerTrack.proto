@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package org.vocalsharp.vocalshaper.vsp4;
+
+message MixerTrack {
+}
