@@ -1,6 +1,26 @@
 syntax = "proto3";
 
+import "./Utils.proto";
+
 package org.vocalsharp.vocalshaper.vsp4;
 
+message SeqTrackInfo {
+    required string name = 1;
+    fixed color = 2;
+}
+
+message SeqSourceInstance {
+	required uint32 index = 1;
+	required double startPos = 2;
+	required double endPos = 3;
+	required double length = 4;
+	required double offset = 5;
+}
+
 message SeqTrack {
+	required TrackType type = 1;
+    required SeqTrackInfo info = 2;
+	bool bypassed = 3;
+
+	repeated SeqSourceInstance sources = 4;
 }

@@ -6,15 +6,10 @@ message PluginInfo {
     required string id = 1;
 }
 
-message PluginCCLink {
-    required uint32 channel = 1;
-    required uint32 param = 2;
-}
-
 message PluginState {
     bytes data = 1;
     uint32 midiChannel = 2;
-    repeated PluginCCLink paramCCLinks = 3;
+    map<uint32, uint32> paramCCLinks = 3;
     bool midiOutput = 4;
     bool midiIntercept = 5;
 }
@@ -22,11 +17,11 @@ message PluginState {
 message Instr {
     required PluginInfo info = 1;
     required PluginState state = 2;
-    bool bypass = 3;
+    bool bypassed = 3;
 }
 
 message Effect {
     required PluginInfo info = 1;
     required PluginState state = 2;
-    bool bypass = 3;
+    bool bypassed = 3;
 }

@@ -1,6 +1,24 @@
 syntax = "proto3";
 
+import "./Utils.proto";
+import "./Plugin.proto";
+
 package org.vocalsharp.vocalshaper.vsp4;
 
+message MixerTrackInfo {
+    required string name = 1;
+    fixed32 color = 2;
+}
+
 message MixerTrack {
+	required TrackType type = 1;
+    required MixerTrackInfo info = 2;
+	bool bypassed = 3;
+	uint32 additionalBuses = 4;
+
+	repeated Effect effects = 5;
+	bool muted = 6;
+	double gain = 7;
+	double panner = 8;
+	double slider = 9;
 }

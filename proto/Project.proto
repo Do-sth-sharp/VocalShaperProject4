@@ -2,26 +2,21 @@ syntax = "proto3";
 
 import "./Source.proto";
 import "./MainGraph.proto";
+import "./Utils.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
-message ProjectVersion {
-    required uint32 major = 1;
-    required uint32 minor = 2;
-    required uint32 patch = 3;
-}
-
 message ProjectInfo {
-    required uint32 createdTime = 1;
-    required uint32 lastSavedTime = 2;
-    required uint32 spentTime = 3;
+    required fixed32 createdTime = 1;
+    required fixed32 lastSavedTime = 2;
+    required fixed32 spentTime = 3;
     required string createdPlatform = 4;
     required string lastSavedPlatform = 5;
     repeated string authors = 6;
 }
 
 message Project {
-    required ProjectVersion version = 1;
+    required Version version = 1;
     required ProjectInfo info = 2;
     required SourceList sources = 3;
     required MainGraph graph = 4;
