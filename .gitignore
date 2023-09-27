@@ -1,0 +1,7 @@
+# CMake Output
+[Oo]ut/**
+
+# Protoc Output
+cxx/*.pb.cc
+cxx/*.pb.h
+cxx/VSP4.h
