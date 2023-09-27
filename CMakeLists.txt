@@ -23,7 +23,8 @@ set (PROTOBUF_DIR "${CMAKE_CURRENT_SOURCE_DIR}/protobuf" CACHE STRING INTERNAL)
 set (protobuf_BUILD_SHARED_LIBS ON)
 set (protobuf_BUILD_TESTS OFF)
 set (protobuf_WITH_ZLIB OFF)
-set (CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+#set (CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+set (ABSL_PROPAGATE_CXX_STD ON)
 add_subdirectory (${PROTOBUF_DIR})
 
 # Get All Proto Files
@@ -89,3 +90,13 @@ else ()
 target_compile_definitions (libvsp4 PRIVATE "VSP4_API=__attribute__((visibility(\"default\")))")
 endif ()
 target_compile_definitions (libvsp4-static PRIVATE "VSP4_API= ")
+
+# Output Path
+if (DEFINED VSP4_OUTPUT)
+	set_target_properties(libvsp4 libvsp4-static libprotobuf
+		PROPERTIES
+		ARCHIVE_OUTPUT_DIRECTORY "${VSP4_OUTPUT}"
+		LIBRARY_OUTPUT_DIRECTORY "${VSP4_OUTPUT}"
+		RUNTIME_OUTPUT_DIRECTORY "${VSP4_OUTPUT}"
+	)
+endif (DEFINED VSP4_OUTPUT)
