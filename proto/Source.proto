@@ -9,9 +9,9 @@ message Source {
 		SYNTH = 2;
 	}
 
-	required Type type = 1;
-	required string path = 2;
-	required string name = 3;
+	Type type = 1;
+	string path = 2;
+	string name = 3;
 }
 
 message SourceList {

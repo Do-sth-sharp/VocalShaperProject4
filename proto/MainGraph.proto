@@ -1,41 +1,41 @@
 syntax = "proto3";
 
-import "./SeqTrack.proto";
-import "./MixerTrack.proto";
-import "./Plugin.proto";
+import "SeqTrack.proto";
+import "MixerTrack.proto";
+import "Plugin.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
 message MIDIInputConnection {
-	required uint32 dst = 1;
+	uint32 dst = 1;
 }
 
 message MIDIOutputConnection {
-	required uint32 src = 1;
+	uint32 src = 1;
 }
 
 message MIDISendConnection {
-	required uint32 src = 1;
-	required uint32 dst = 2;
+	uint32 src = 1;
+	uint32 dst = 2;
 }
 
 message AudioInputConnection {
-	required uint32 srcChannel = 1;
-	required uint32 dst = 2;
-	required uint32 dstChannel = 3;
+	uint32 srcChannel = 1;
+	uint32 dst = 2;
+	uint32 dstChannel = 3;
 }
 
 message AudioOutputConnection {
-	required uint32 src = 1;
-	required uint32 srcChannel = 2;
-	required uint32 dstChannel = 3;
+	uint32 src = 1;
+	uint32 srcChannel = 2;
+	uint32 dstChannel = 3;
 }
 
 message AudioSendConnection {
-	required uint32 src = 1;
-	required uint32 srcChannel = 2;
-	required uint32 dst = 3;
-	required uint32 dstChannel = 4;
+	uint32 src = 1;
+	uint32 srcChannel = 2;
+	uint32 dst = 3;
+	uint32 dstChannel = 4;
 }
 
 message MainGraph {
@@ -55,5 +55,5 @@ message MainGraph {
 		repeated AudioSendConnection audioTrack2Track = 9;
 		repeated MIDIOutputConnection midiTrack2O = 10;
 	}
-	required Connections connections = 4;
+	Connections connections = 4;
 }

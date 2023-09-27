@@ -1,18 +1,18 @@
 syntax = "proto3";
 
-import "./Utils.proto";
-import "./Plugin.proto";
+import "Utils.proto";
+import "Plugin.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
 message MixerTrackInfo {
-    required string name = 1;
+    string name = 1;
     fixed32 color = 2;
 }
 
 message MixerTrack {
-	required TrackType type = 1;
-    required MixerTrackInfo info = 2;
+	TrackType type = 1;
+    MixerTrackInfo info = 2;
 	bool bypassed = 3;
 	uint32 additionalBuses = 4;
 

@@ -3,7 +3,7 @@ syntax = "proto3";
 package org.vocalsharp.vocalshaper.vsp4;
 
 message PluginInfo {
-    required string id = 1;
+    string id = 1;
 }
 
 message PluginState {
@@ -15,13 +15,13 @@ message PluginState {
 }
 
 message Instr {
-    required PluginInfo info = 1;
-    required PluginState state = 2;
+    PluginInfo info = 1;
+    PluginState state = 2;
     bool bypassed = 3;
 }
 
 message Effect {
-    required PluginInfo info = 1;
-    required PluginState state = 2;
+    PluginInfo info = 1;
+    PluginState state = 2;
     bool bypassed = 3;
 }
