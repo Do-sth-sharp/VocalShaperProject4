@@ -93,7 +93,7 @@ target_compile_definitions (libvsp4-static PRIVATE "VSP4_API= ")
 
 # Output Path
 if (DEFINED VSP4_OUTPUT)
-	set_target_properties(libvsp4 libvsp4-static libprotobuf
+	set_target_properties(libvsp4 libvsp4-static protoc libprotoc libprotobuf libprotobuf-lite abseil_dll
 		PROPERTIES
 		ARCHIVE_OUTPUT_DIRECTORY "${VSP4_OUTPUT}"
 		LIBRARY_OUTPUT_DIRECTORY "${VSP4_OUTPUT}"
