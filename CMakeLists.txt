@@ -81,8 +81,8 @@ target_link_libraries (libvsp4 PUBLIC protobuf::libprotobuf)
 target_link_libraries (libvsp4-static PUBLIC protobuf::libprotobuf)
 
 # Dll Target Definitions
-target_include_directories (libvsp4 PUBLIC "${PROTOBUF_DIR}/src")
-target_include_directories (libvsp4-static PUBLIC "${PROTOBUF_DIR}/src")
+target_include_directories (libvsp4 PUBLIC "${PROTOBUF_DIR}/src" "${VSP4_PROTO_CXX_DIR}")
+target_include_directories (libvsp4-static PUBLIC "${PROTOBUF_DIR}/src" "${VSP4_PROTO_CXX_DIR}")
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 target_compile_definitions (libvsp4 PRIVATE "VSP4_API=__declspec(dllexport)")
