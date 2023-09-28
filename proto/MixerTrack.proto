@@ -16,7 +16,7 @@ message MixerTrack {
 	bool bypassed = 3;
 	uint32 additionalBuses = 4;
 
-	repeated Effect effects = 5;
+	repeated Plugin effects = 5;
 	bool muted = 6;
 	double gain = 7;
 	double panner = 8;

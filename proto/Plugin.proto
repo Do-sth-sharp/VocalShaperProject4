@@ -14,13 +14,7 @@ message PluginState {
     bool midiIntercept = 5;
 }
 
-message Instr {
-    PluginInfo info = 1;
-    PluginState state = 2;
-    bool bypassed = 3;
-}
-
-message Effect {
+message Plugin {
     PluginInfo info = 1;
     PluginState state = 2;
     bool bypassed = 3;

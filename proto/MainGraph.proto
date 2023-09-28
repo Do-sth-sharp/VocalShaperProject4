@@ -40,7 +40,7 @@ message AudioSendConnection {
 
 message MainGraph {
 	repeated SeqTrack seqTracks = 1;
-	repeated Instr instrs = 2;
+	repeated Plugin instrs = 2;
 	repeated MixerTrack mixerTracks = 3;
 
 	message Connections {
