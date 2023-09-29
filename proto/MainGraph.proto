@@ -3,6 +3,7 @@ syntax = "proto3";
 import "SeqTrack.proto";
 import "MixerTrack.proto";
 import "Plugin.proto";
+import "Recorder.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
@@ -56,4 +57,6 @@ message MainGraph {
 		repeated MIDIOutputConnection midiTrack2O = 10;
 	}
 	Connections connections = 4;
+
+	Recorder recorder = 5;
 }

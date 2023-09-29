@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package org.vocalsharp.vocalshaper.vsp4;
+
+message SourceRecorderInstance {
+	uint32 index = 1;
+	double offset = 2;
+}
+
+message Recorder {
+	repeated SourceRecorderInstance sources = 1;
+}

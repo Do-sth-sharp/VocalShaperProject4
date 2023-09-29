@@ -10,13 +10,17 @@ message MixerTrackInfo {
     fixed32 color = 2;
 }
 
+message PluginDock {
+	repeated Plugin plugins = 1;
+}
+
 message MixerTrack {
 	TrackType type = 1;
     MixerTrackInfo info = 2;
 	bool bypassed = 3;
 	uint32 additionalBuses = 4;
 
-	repeated Plugin effects = 5;
+	PluginDock effects = 5;
 	bool muted = 6;
 	double gain = 7;
 	double panner = 8;

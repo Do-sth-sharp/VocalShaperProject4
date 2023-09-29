@@ -17,10 +17,14 @@ message SeqSourceInstance {
 	double offset = 5;
 }
 
+message SourceInstanceList {
+	repeated SeqSourceInstance sources = 1;
+}
+
 message SeqTrack {
 	TrackType type = 1;
     SeqTrackInfo info = 2;
 	bool bypassed = 3;
 
-	repeated SeqSourceInstance sources = 4;
+	SourceInstanceList sources = 4;
 }
