@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "Plugin.proto";
+
 package org.vocalsharp.vocalshaper.vsp4;
 
 message Source {
@@ -12,6 +14,8 @@ message Source {
 	Type type = 1;
 	string path = 2;
 	string name = 3;
+
+	Plugin synthesizer = 4;
 }
 
 message SourceList {
