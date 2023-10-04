@@ -13,8 +13,7 @@ message SeqSourceInstance {
 	uint32 index = 1;
 	double startPos = 2;
 	double endPos = 3;
-	double length = 4;
-	double offset = 5;
+	double offset = 4;
 }
 
 message SourceInstanceList {
