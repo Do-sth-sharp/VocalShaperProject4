@@ -12,6 +12,7 @@ message Source {
 	}
 
 	Type type = 1;
+	int32 id = 5;
 	string path = 2;
 	string name = 3;
 
