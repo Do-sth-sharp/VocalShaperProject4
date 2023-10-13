@@ -1,9 +1,12 @@
 syntax = "proto3";
 
+import "Utils.proto";
+
 package org.vocalsharp.vocalshaper.vsp4;
 
 message PluginInfo {
     string id = 1;
+    TrackType decoratorType = 2;
 }
 
 message PluginState {
