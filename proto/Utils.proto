@@ -1,4 +1,4 @@
-syntax = "proto3";
+﻿syntax = "proto3";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
@@ -51,4 +51,36 @@ enum TrackType {
     AMBISONIC_5 = 105;
     AMBISONIC_6 = 106;
     AMBISONIC_7 = 107;
+}
+
+message MIDIInputConnection {
+	uint32 dst = 1;
+}
+
+message MIDIOutputConnection {
+	uint32 src = 1;
+}
+
+message MIDISendConnection {
+	uint32 src = 1;
+	uint32 dst = 2;
+}
+
+message AudioInputConnection {
+	uint32 srcChannel = 1;
+	uint32 dst = 2;
+	uint32 dstChannel = 3;
+}
+
+message AudioOutputConnection {
+	uint32 src = 1;
+	uint32 srcChannel = 2;
+	uint32 dstChannel = 3;
+}
+
+message AudioSendConnection {
+	uint32 src = 1;
+	uint32 srcChannel = 2;
+	uint32 dst = 3;
+	uint32 dstChannel = 4;
 }
