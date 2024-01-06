@@ -1,5 +1,6 @@
 ﻿# CMake Output
 [Oo]ut/**
+cmake-*/**
 
 # Protoc Output
 cxx/*.pb.cc
@@ -8,3 +9,4 @@ cxx/VSP4.h
 
 # IDE Temp
 .vs/**
+.idea/**

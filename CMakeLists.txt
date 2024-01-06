@@ -73,51 +73,53 @@ add_dependencies (
 	protobuf::protoc)
 
 # Add Dll Target
-add_library (libvsp4 SHARED ${VSP4_PROTO_CXX_INC} ${VSP4_PROTO_CXX_SRC})
-add_library (libvsp4-static STATIC ${VSP4_PROTO_CXX_INC} ${VSP4_PROTO_CXX_SRC})
-target_link_libraries (libvsp4 PUBLIC protobuf::libprotobuf)
-target_link_libraries (libvsp4-static PUBLIC protobuf::libprotobuf)
-add_dependencies (libvsp4 vsp4_proto_generate)
-add_dependencies (libvsp4-static vsp4_proto_generate)
+add_library (vsp4 SHARED ${VSP4_PROTO_CXX_INC} ${VSP4_PROTO_CXX_SRC})
+add_library (vsp4-static STATIC ${VSP4_PROTO_CXX_INC} ${VSP4_PROTO_CXX_SRC})
+target_link_libraries (vsp4 PUBLIC protobuf::libprotobuf)
+target_link_libraries (vsp4-static PUBLIC protobuf::libprotobuf)
+add_dependencies (vsp4 vsp4_proto_generate)
+add_dependencies (vsp4-static vsp4_proto_generate)
 
 # Dll Target Definitions
 file (RELATIVE_PATH CXX_RELATIVE_DIR ${CMAKE_CURRENT_SOURCE_DIR} ${VSP4_PROTO_CXX_DIR})
-target_include_directories (libvsp4 PUBLIC
+target_include_directories (vsp4 PUBLIC
 	"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${CXX_RELATIVE_DIR}>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${VSP4_INSTALL_NAME}/${CXX_RELATIVE_DIR}>"
 )
-target_include_directories (libvsp4-static PUBLIC
+target_include_directories (vsp4-static PUBLIC
 	"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${CXX_RELATIVE_DIR}>"
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${VSP4_INSTALL_NAME}/${CXX_RELATIVE_DIR}>"
 )
 
-target_compile_definitions (libvsp4 PRIVATE "VSP4_DLL_BUILD=1")
-target_compile_definitions (libvsp4 PUBLIC "VSP4_DLL=1")
+target_compile_definitions (vsp4 PRIVATE "VSP4_DLL_BUILD=1")
+target_compile_definitions (vsp4 PUBLIC "VSP4_DLL=1")
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-target_compile_definitions (libvsp4 PRIVATE "VSP4_API=__declspec(dllexport)")
+target_compile_definitions (vsp4 PRIVATE "VSP4_API=__declspec(dllexport)")
 else ()
-target_compile_definitions (libvsp4 PRIVATE "VSP4_API=__attribute__((visibility(\"default\")))")
+target_compile_definitions (vsp4 PRIVATE "VSP4_API=__attribute__((visibility(\"default\")))")
 endif ()
-target_compile_definitions (libvsp4-static PRIVATE "VSP4_API= ")
+target_compile_definitions (vsp4-static PRIVATE "VSP4_API= ")
 
 # Install
 set (VSP4_CMAKE_CONFIG_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/${VSP4_INSTALL_NAME})
 
-install (TARGETS libvsp4
+install (TARGETS vsp4
 	EXPORT ${VSP4_INSTALL_NAME}Targets
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" OPTIONAL
 	LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" OPTIONAL
 	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" OPTIONAL
 )
-install (TARGETS libvsp4-static
+install (TARGETS vsp4-static
 	EXPORT ${VSP4_INSTALL_NAME}Targets
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" OPTIONAL
 	LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" OPTIONAL
 	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" OPTIONAL
 )
 
-install (FILES $<TARGET_PDB_FILE:libvsp4> DESTINATION "${CMAKE_INSTALL_BINDIR}" OPTIONAL)
+if (MSVC)
+	install (FILES $<TARGET_PDB_FILE:vsp4> DESTINATION "${CMAKE_INSTALL_BINDIR}" OPTIONAL)
+endif (MSVC)
 
 file (GLOB_RECURSE VSP4_HDR_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${VSP4_PROTO_CXX_DIR}/*.h")
 foreach (HDR_FILE ${VSP4_PROTO_CXX_INC})
