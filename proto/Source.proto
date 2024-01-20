@@ -1,4 +1,4 @@
-syntax = "proto3";
+﻿syntax = "proto3";
 
 import "Plugin.proto";
 
@@ -8,7 +8,6 @@ message Source {
 	enum Type {
 		AUDIO = 0;
 		MIDI = 1;
-		SYNTH = 2;
 	}
 
 	Type type = 1;
@@ -17,6 +16,7 @@ message Source {
 	string name = 3;
 
 	Plugin synthesizer = 4;
+	uint32 synthDst = 6;
 }
 
 message SourceList {
