@@ -12,6 +12,7 @@ message MixerTrackInfo {
 
 message PluginDock {
 	repeated Plugin plugins = 1;
+	//repeated AudioInputConnection connections = 2;
 }
 
 message MixerTrack {
