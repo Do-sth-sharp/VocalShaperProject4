@@ -2,23 +2,21 @@
 
 import "SeqTrack.proto";
 import "MixerTrack.proto";
-import "Plugin.proto";
-import "Recorder.proto";
 import "Utils.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
 message MainGraph {
 	repeated SeqTrack seqTracks = 1;
-	repeated Plugin instrs = 2;
+	//repeated Plugin instrs = 2;
 	repeated MixerTrack mixerTracks = 3;
 
 	message Connections {
-		repeated MIDIInputConnection midiI2Instr = 1;
-		repeated MIDISendConnection midiSrc2Instr = 2;
+		//repeated MIDIInputConnection midiI2Instr = 1;
+		//repeated MIDISendConnection midiSrc2Instr = 2;
 		repeated MIDISendConnection midiSrc2Track = 3;
 		repeated AudioSendConnection audioSrc2Track = 4;
-		repeated AudioSendConnection audioInstr2Track = 5;
+		//repeated AudioSendConnection audioInstr2Track = 5;
 		repeated MIDIInputConnection midiI2Track = 6;
 		repeated AudioInputConnection audioI2Track = 7;
 		repeated AudioOutputConnection audioTrack2O = 8;
@@ -27,5 +25,5 @@ message MainGraph {
 	}
 	Connections connections = 4;
 
-	Recorder recorder = 5;
+	//Recorder recorder = 5;
 }

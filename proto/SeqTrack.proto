@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "Plugin.proto";
 import "Utils.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
@@ -10,10 +11,10 @@ message SeqTrackInfo {
 }
 
 message SeqSourceInstance {
-	uint32 index = 1;
+	//uint32 index = 1;
 	double startPos = 2;
 	double endPos = 3;
-	double offset = 4;
+	//double offset = 4;
 }
 
 message SourceInstanceList {
@@ -26,4 +27,9 @@ message SeqTrack {
 	bool bypassed = 3;
 
 	SourceInstanceList sources = 4;
+	string midiSrc = 5;
+	string audioSrc = 6;
+	uint32 recCompensate = 7;
+
+	Plugin instr = 8;
 }
