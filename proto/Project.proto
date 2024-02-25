@@ -17,7 +17,6 @@ message ProjectInfo {
 message Project {
     Version version = 1;
     ProjectInfo info = 2;
-    //SourceList sources = 3;
     MainGraph graph = 4;
     bytes tempoEvents = 5;
 }
