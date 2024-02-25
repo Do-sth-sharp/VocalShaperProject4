@@ -13,6 +13,7 @@ message SeqTrackInfo {
 message SeqSourceInstance {
 	double startPos = 1;
 	double endPos = 2;
+	double offset = 3;
 }
 
 message SourceInstanceList {
