@@ -11,8 +11,8 @@ message SeqTrackInfo {
 }
 
 message SeqSourceInstance {
-	double startPos = 2;
-	double endPos = 3;
+	double startPos = 1;
+	double endPos = 2;
 }
 
 message SourceInstanceList {

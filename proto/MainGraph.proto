@@ -8,16 +8,16 @@ package org.vocalsharp.vocalshaper.vsp4;
 
 message MainGraph {
 	repeated SeqTrack seqTracks = 1;
-	repeated MixerTrack mixerTracks = 3;
+	repeated MixerTrack mixerTracks = 2;
 
 	message Connections {
-		repeated MIDISendConnection midiSrc2Track = 3;
-		repeated AudioSendConnection audioSrc2Track = 4;
-		repeated MIDIInputConnection midiI2Track = 6;
-		repeated AudioInputConnection audioI2Track = 7;
-		repeated AudioOutputConnection audioTrack2O = 8;
-		repeated AudioSendConnection audioTrack2Track = 9;
-		repeated MIDIOutputConnection midiTrack2O = 10;
+		repeated MIDISendConnection midiSrc2Track = 1;
+		repeated AudioSendConnection audioSrc2Track = 2;
+		repeated MIDIInputConnection midiI2Track = 3;
+		repeated AudioInputConnection audioI2Track = 4;
+		repeated AudioOutputConnection audioTrack2O = 5;
+		repeated AudioSendConnection audioTrack2Track = 6;
+		repeated MIDIOutputConnection midiTrack2O = 7;
 	}
-	Connections connections = 4;
+	Connections connections = 3;
 }
