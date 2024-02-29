@@ -31,4 +31,6 @@ message SeqTrack {
 	uint32 recCompensate = 7;
 
 	Plugin instr = 8;
+
+	bool recording = 9;
 }
