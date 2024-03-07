@@ -29,8 +29,8 @@ message SeqTrack {
 	string midiSrc = 5;
 	string audioSrc = 6;
 	uint32 recCompensate = 7;
+	bool recording = 9;
 
 	Plugin instr = 8;
-
-	bool recording = 9;
+	bool offline = 10;
 }
