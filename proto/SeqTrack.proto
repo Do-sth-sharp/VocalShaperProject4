@@ -30,6 +30,7 @@ message SeqTrack {
 	string audioSrc = 6;
 	uint32 recCompensate = 7;
 	bool recording = 9;
+	bool muted = 11;
 
 	Plugin instr = 8;
 	bool offline = 10;
