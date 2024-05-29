@@ -24,9 +24,9 @@ message SeqTrack {
 	TrackType type = 1;
     SeqTrackInfo info = 2;
 	bool bypassed = 3;
-
 	SourceInstanceList sources = 4;
 	string midiSrc = 5;
+	uint32 midiTrack = 12;
 	string audioSrc = 6;
 	uint32 recCompensate = 7;
 	bool recording = 9;
