@@ -16,6 +16,24 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")# Usin
 
 find_package (Protobuf CONFIG REQUIRED)
 
+# Protoc Debug
+execute_process (
+	COMMAND $<TARGET_FILE:protobuf::protoc> --version
+	OUTPUT_VARIABLE _temp
+	ERROR_VARIABLE _err
+	OUTPUT_STRIP_TRAILING_WHITESPACE
+	ERROR_STRIP_TRAILING_WHITESPACE
+	ERROR_QUIET
+	RESULT_VARIABLE _code
+)
+
+if(_code EQUAL 0)
+	message (STATUS "${_temp}")
+else()
+	message (FATAL_ERROR "Error getting protoc version with exit code ${_code}: ${_err}")
+endif()
+
+# Environment
 include (GNUInstallDirs)
 include (CMakePackageConfigHelpers)
 
