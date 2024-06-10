@@ -17,21 +17,23 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")# Usin
 find_package (Protobuf CONFIG REQUIRED)
 
 # Protoc Debug
+get_target_property(PROTOC_EXECUTABLE protobuf::protoc LOCATION)
+message (STATUS "Protoc excutable path: ${PROTOC_EXECUTABLE}")
 execute_process (
-	COMMAND $<TARGET_FILE:protobuf::protoc> --version
-	OUTPUT_VARIABLE _temp
-	ERROR_VARIABLE _err
+	COMMAND ${PROTOC_EXECUTABLE} --version
+	OUTPUT_VARIABLE protoc_out
+	ERROR_VARIABLE protoc_err
 	OUTPUT_STRIP_TRAILING_WHITESPACE
 	ERROR_STRIP_TRAILING_WHITESPACE
 	ERROR_QUIET
-	RESULT_VARIABLE _code
+	RESULT_VARIABLE protoc_code
 )
 
-if(_code EQUAL 0)
-	message (STATUS "${_temp}")
-else()
-	message (FATAL_ERROR "Error getting protoc version with exit code ${_code}: ${_err}")
-endif()
+if (protoc_code EQUAL 0)
+	message (STATUS "${protoc_out}")
+else ()
+	message (FATAL_ERROR "Error getting protoc version with exit code ${protoc_code}: ${protoc_err}")
+endif ()
 
 # Environment
 include (GNUInstallDirs)
@@ -61,7 +63,7 @@ foreach (PROTO_FILE ${VSP4_PROTO_SRC})
 
 	add_custom_command (
 		OUTPUT "${PROTO_CXX_SRC_FILE}" "${PROTO_CXX_INC_FILE}"
-		COMMAND $<TARGET_FILE:protobuf::protoc>
+		COMMAND ${PROTOC_EXECUTABLE}
 		ARGS --cpp_out=dllexport_decl=VSP4_API:${VSP4_PROTO_CXX_DIR}
 			--proto_path=${VSP4_PROTO_SRC_DIR}
 			${PROTO_FILE}
