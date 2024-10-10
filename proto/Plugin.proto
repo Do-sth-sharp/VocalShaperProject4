@@ -16,6 +16,7 @@ message PluginState {
     map<uint32, uint32> paramCCLinks = 3;
     bool midiOutput = 4;
     bool midiIntercept = 5;
+    string araDataID = 6;
 }
 
 message Plugin {
