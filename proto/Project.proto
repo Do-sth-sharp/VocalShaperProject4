@@ -16,6 +16,8 @@ message ProjectInfo {
 
 message Project {
     Version version = 1;
+    Version minVersionSupported = 5;
+
     ProjectInfo info = 2;
     MainGraph graph = 3;
     bytes tempoEvents = 4;
