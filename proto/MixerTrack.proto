@@ -6,23 +6,23 @@ import "Plugin.proto";
 package org.vocalsharp.vocalshaper.vsp4;
 
 message MixerTrackInfo {
-    string name = 1;
-    fixed32 color = 2;
+    string name = 1;		// Track name.
+    fixed32 color = 2;		// Track color. In ARGB.
 }
 
 message PluginDock {
-	repeated Plugin plugins = 1;
+	repeated Plugin plugins = 1;	// List of effects plugin.
 }
 
 message MixerTrack {
-	TrackType type = 1;
-    MixerTrackInfo info = 2;
-	bool bypassed = 3;
-	uint32 additionalBuses = 4;
+	TrackType type = 1;				// Track audio bus type.
+    MixerTrackInfo info = 2;		// Track basic information.
+	bool bypassed = 3;				// Track bypass switch.
+	uint32 additionalBuses = 4;		// Number of track side chain buses.
 
-	PluginDock effects = 5;
-	bool muted = 6;
-	double gain = 7;
-	double panner = 8;
-	double slider = 9;
+	PluginDock effects = 5;			// Effect container.
+	bool muted = 6;					// Track mute switch.
+	double gain = 7;				// Track input gain size.
+	double panner = 8;				// Track input panner.
+	double slider = 9;				// Track output fader.
 }

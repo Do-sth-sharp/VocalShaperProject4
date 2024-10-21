@@ -6,43 +6,44 @@ import "Utils.proto";
 package org.vocalsharp.vocalshaper.vsp4;
 
 message SeqTrackInfo {
-    string name = 1;
-    fixed32 color = 2;
+    string name = 1;			// Track name.
+    fixed32 color = 2;			// Track color. In ARGB.
 }
 
 message SeqSourceInstance {
-	double startPos = 1;
-	double endPos = 2;
-	double offset = 3;
+	double startPos = 1;		// Instance start seconds in the sequence track.
+	double endPos = 2;			// Instance end seconds in the sequence track.
+	double offset = 3;			// How many seconds before the start time of the data source compared to the start time of the sequencer track.
 }
 
 message SourceInstanceList {
-	repeated SeqSourceInstance sources = 1;
+	repeated SeqSourceInstance sources = 1;		// List of data source instances.
 }
 
 message SourceInfo {
-	double audioSampleRate = 1;
-	double audioLength = 2;
+	double audioSampleRate = 1;			// Audio source sampling rate.
+	double audioLength = 2;				// Audio source length.
 }
 
 message SeqTrack {
-	TrackType type = 1;
-    SeqTrackInfo info = 2;
-	bool bypassed = 3;
+	TrackType type = 1;					// Track audio bus type.
+    SeqTrackInfo info = 2;				// Track basic information.
+	bool bypassed = 3;					// Track bypass switch.
 
-	SourceInstanceList sources = 4;
+	SourceInstanceList sources = 4;		// List of data source instances.
 
-	string midiSrc = 5;
-	uint32 midiTrack = 12;
-	string audioSrc = 6;
+	string midiSrc = 5;					// MIDI source file name.
+	uint32 midiTrack = 12;				// MIDI source track index used.
+	string audioSrc = 6;				// Audio source file name.
 
-	// To Make ARA Happy When Audio Loading Not Completed
-	SourceInfo sourceInfo = 13;
+	SourceInfo sourceInfo = 13;			// Basic information of the data source.
+										// Only used to provide correct source information to the ARA plugin 
+										// before the end of source file reading to ensure correct ARA synchronization.
 
-	uint32 recCompensate = 7;
-	bool recording = 9;
-	bool muted = 11;
+	//uint32 recCompensate = 7;
+	bool recording = 9;					// Track recording switch.
+	bool muted = 11;					// Track mute switch.
 
-	Plugin instr = 8;
-	bool offline = 10;
+	Plugin instr = 8;					// Track instruments or ARA plugins.
+	bool offline = 10;					// Track instruments offline.
 }

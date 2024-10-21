@@ -6,19 +6,22 @@ import "Utils.proto";
 package org.vocalsharp.vocalshaper.vsp4;
 
 message ProjectInfo {
-    fixed32 createdTime = 1;
-    fixed32 lastSavedTime = 2;
-    fixed32 spentTime = 3;
-    string createdPlatform = 4;
-    string lastSavedPlatform = 5;
-    repeated string authors = 6;
+    fixed32 createdTime = 1;        // Project creation time. Calculated in seconds from midnight on Jan 1st, 1970.
+    fixed32 lastSavedTime = 2;      // Last saved time of the project. Calculated in seconds from midnight on Jan 1st, 1970.
+    fixed32 spentTime = 3;          // The total time the project was opened in the editor 
+                                    // (calculated as the time elapsed between creating the project or reading the file and saving it). In seconds.
+    string createdPlatform = 4;     // Project creation platform. 
+                                    // Format as: Audio Platform Name, Audio Platform Version, Audio Platform Compile Time; Release Branch, Release Name; OS Name. 
+                                    // Example: "VocalShaper, 0.0.2, Sep  1 2024 22:54:44; Community, Pinellia; Windows 11".
+    string lastSavedPlatform = 5;   // Last saved platform of the project. Format same as createdPlatform.
+    repeated string authors = 6;    // List of file authors, with anonymous authors displayed as "Anonymous" in the list.
 }
 
 message Project {
-    Version version = 1;
-    Version minVersionSupported = 5;
+    Version version = 1;                // The application version used to save this project.
+    Version minVersionSupported = 5;    // The minimum application version that can be used to read this project.
 
-    ProjectInfo info = 2;
-    MainGraph graph = 3;
-    bytes tempoEvents = 4;
+    ProjectInfo info = 2;               // Basic project information.
+    MainGraph graph = 3;                // Main audio topology map.
+    bytes tempoEvents = 4;              // List of tempo and beat labels. As MIDI events.
 }

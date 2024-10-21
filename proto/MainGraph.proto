@@ -7,17 +7,17 @@ import "Utils.proto";
 package org.vocalsharp.vocalshaper.vsp4;
 
 message MainGraph {
-	repeated SeqTrack seqTracks = 1;
-	repeated MixerTrack mixerTracks = 2;
+	repeated SeqTrack seqTracks = 1;			// Sequencer track list.
+	repeated MixerTrack mixerTracks = 2;		// Mixer track list.
 
 	message Connections {
-		repeated MIDISendConnection midiSrc2Track = 1;
-		repeated AudioSendConnection audioSrc2Track = 2;
-		repeated MIDIInputConnection midiI2Track = 3;
-		repeated AudioInputConnection audioI2Track = 4;
-		repeated AudioOutputConnection audioTrack2O = 5;
-		repeated AudioSendConnection audioTrack2Track = 6;
-		repeated MIDIOutputConnection midiTrack2O = 7;
+		repeated MIDISendConnection midiSrc2Track = 1;			// MIDI connections from sequencer tracks to mixer tracks.
+		repeated AudioSendConnection audioSrc2Track = 2;		// Audio connections from sequencer tracks to mixer tracks.
+		repeated MIDIInputConnection midiI2Track = 3;			// MIDI connections from input devices to mixer tracks.
+		repeated AudioInputConnection audioI2Track = 4;			// Audio connections from input devices to mixer tracks.
+		repeated AudioOutputConnection audioTrack2O = 5;		// Audio connections from mixer tracks to output devices.
+		repeated AudioSendConnection audioTrack2Track = 6;		// Audio connections from mixer tracks to other mixer tracks.
+		repeated MIDIOutputConnection midiTrack2O = 7;			// MIDI connections from mixer tracks to output devices.
 	}
-	Connections connections = 3;
+	Connections connections = 3;				// Connection lists.
 }

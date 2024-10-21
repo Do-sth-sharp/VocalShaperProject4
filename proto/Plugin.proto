@@ -5,22 +5,23 @@ import "Utils.proto";
 package org.vocalsharp.vocalshaper.vsp4;
 
 message PluginInfo {
-    string id = 1;
-    TrackType decoratorType = 2;
-    bool addARA = 3;
+    string id = 1;                  // Plugin ID, created by JUCE.
+                                    // Example: VST-VOCALOID5 VSTi-b099a95-56355632
+    TrackType decoratorType = 2;    // Plugin decorator audio bus type.
+    bool addARA = 3;                // Is the plugin enabled in ARA mode.
 }
 
 message PluginState {
-    bytes data = 1;
-    uint32 midiChannel = 2;
-    map<uint32, uint32> paramCCLinks = 3;
-    bool midiOutput = 4;
-    bool midiIntercept = 5;
-    string araDataID = 6;
+    bytes data = 1;                         // Internal data storage of plugin.
+    uint32 midiChannel = 2;                 // Plugin MIDI channel.
+    map<uint32, uint32> paramCCLinks = 3;   // Plugin MIDI CC controller - Parameter index connection.
+    bool midiOutput = 4;                    // Does the plugin enable MIDI output.
+    bool midiIntercept = 5;                 // Does the plugin prevent MIDI CC events from being directly passed in.
+    string araDataID = 6;                   // File ID for storing ARA source data.
 }
 
 message Plugin {
-    PluginInfo info = 1;
-    PluginState state = 2;
-    bool bypassed = 3;
+    PluginInfo info = 1;                    // Basic information of plugin.
+    PluginState state = 2;                  // Plugin state data.
+    bool bypassed = 3;                      // Plugin bypass switch.
 }
