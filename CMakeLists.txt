@@ -114,7 +114,7 @@ target_include_directories (vsp4-static PUBLIC
 target_compile_definitions (vsp4 PRIVATE "VSP4_DLL_BUILD=1")
 target_compile_definitions (vsp4 PUBLIC "VSP4_DLL=1")
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+if (WIN32 AND NOT MINGW)
 target_compile_definitions (vsp4 PRIVATE "VSP4_API=__declspec(dllexport)")
 else ()
 target_compile_definitions (vsp4 PRIVATE "VSP4_API=__attribute__((visibility(\"default\")))")

@@ -3,7 +3,7 @@
 #if defined (__clang__)
 #define VSP4_CLANG 1
 
-#elif defined (__GNUC__)
+#elif defined (__GNUC__) || defined (__MINGW32__)
 #define VSP4_GCC 1
 
 #elif defined (_MSC_VER)
@@ -13,27 +13,17 @@
 #error Unknown cpp compiler
 #endif
 
-#if VSP4_MSVC
+#if (defined (_WIN32) || defined (_WIN64)) && !defined (__MINGW32__)
 #define VSP4_Export __declspec(dllexport)
 #define VSP4_Import __declspec(dllimport)
+#else
+#define VSP4_Export __attribute__((visibility("default")))
+#define VSP4_Import __attribute__((visibility("default")))
+#endif
+
+#if VSP4_MSVC
 #define VSP4_Call _cdecl
-#endif
-
-#if VSP4_CLANG
-#define VSP4_Export __attribute__((visibility("default")))
-#define VSP4_Import __attribute__((visibility("default")))
-#define VSP4_Call
-#endif
-
-#if VSP4_GCC
-#define VSP4_Export __attribute__((visibility("default")))
-#define VSP4_Import __attribute__((visibility("default")))
-#define VSP4_Call
-#endif
-
-#if !(VSP4_MSVC || VSP4_CLANG || VSP4_GCC)
-#define VSP4_Export 
-#define VSP4_Import 
+#else
 #define VSP4_Call
 #endif
 
