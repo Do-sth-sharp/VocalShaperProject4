@@ -40,8 +40,19 @@ message SeqTrack {
 										// Only used to provide correct source information to the ARA plugin 
 										// before the end of source file reading to ensure correct ARA synchronization.
 
+	enum RecordState {
+		NOT_RECORDING = 0;				// Not recording.
+
+		MIDI_NEW_TRACK_MODE = 0x01;		// Add MIDI data into a new MIDI track.
+		MIDI_INSERT_MODE = 0x02;		// Add MIDI data into current MIDI track and remove old conflicting MIDI events.
+		MIDI_COVER_MODE = 0x03;			// Add MIDI data into current MIDI track and remove old MIDI events in recoding area.
+
+		AUDIO_INSERT_MODE = 0x10;		// Add audio data into current audio channels.
+		AUDIO_COVER_MODE = 0x20;		// Replace audio data.
+	}
 	//uint32 recCompensate = 7;
-	bool recording = 9;					// Track recording switch.
+	//bool recording = 9;					// Track recording switch.
+	RecordState recordState = 14;		// Track recording state.
 	bool muted = 11;					// Track mute switch.
 
 	Plugin instr = 8;					// Track instruments or ARA plugins.
