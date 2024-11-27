@@ -53,6 +53,7 @@ message SeqTrack {
 	//uint32 recCompensate = 7;
 	//bool recording = 9;					// Track recording switch.
 	RecordState recordState = 14;		// Track recording state.
+	bool inputMonitoring = 15;			// Track input monitoring.
 	bool muted = 11;					// Track mute switch.
 
 	Plugin instr = 8;					// Track instruments or ARA plugins.
