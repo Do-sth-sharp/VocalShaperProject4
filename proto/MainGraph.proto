@@ -11,6 +11,8 @@ message MainGraph {
 	repeated MixerTrack mixerTracks = 2;		// Mixer track list.
 
 	message Connections {
+		repeated MIDIInputConnection midiI2Src = 8;				// MIDI connections from input devices to sequencer tracks.
+		repeated AudioInputConnection audioI2Src = 9;			// Audio connections from input devices to sequencer tracks.
 		repeated MIDISendConnection midiSrc2Track = 1;			// MIDI connections from sequencer tracks to mixer tracks.
 		repeated AudioSendConnection audioSrc2Track = 2;		// Audio connections from sequencer tracks to mixer tracks.
 		repeated MIDIInputConnection midiI2Track = 3;			// MIDI connections from input devices to mixer tracks.
