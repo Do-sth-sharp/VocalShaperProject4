@@ -55,6 +55,7 @@ message SeqTrack {
 	RecordState recordState = 14;		// Track recording state.
 	bool inputMonitoring = 15;			// Track input monitoring.
 	bool muted = 11;					// Track mute switch.
+	bool solo = 16;						// Track solo switch.
 
 	Plugin instr = 8;					// Track instruments or ARA plugins.
 	bool offline = 10;					// Track instruments offline.
