@@ -54,9 +54,9 @@ enum BusType {
 }
 
 enum SendDstType {
-    DEVICE = 0;
-    MASTER = 1;
-    AUX = 2;
+    TO_DEVICE = 0;
+    TO_MASTER = 1;
+    TO_AUX = 2;
 }
 
 message MIDISendConnection {

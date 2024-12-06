@@ -13,8 +13,8 @@ message TrackInfo {
 
 enum TrackType {
     TRACK = 0;
-    AUX = 1;
-    MASTER = 2;
+    TRACK_AUX = 1;
+    TRACK_MASTER = 2;
 }
 
 message Track {

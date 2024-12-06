@@ -7,7 +7,7 @@ package org.vocalsharp.vocalshaper.vsp4;
 message PluginInfo {
     string id = 1;                  // Plugin ID, created by JUCE.
                                     // Example: VST-VOCALOID5 VSTi-b099a95-56355632
-    TrackType decoratorType = 2;    // Plugin decorator audio bus type.
+    BusType decoratorType = 2;      // Plugin decorator audio bus type.
     bool addARA = 3;                // Is the plugin enabled in ARA mode.
 }
 

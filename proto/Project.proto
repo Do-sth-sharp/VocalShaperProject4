@@ -24,4 +24,5 @@ message Project {
     ProjectInfo info = 2;               // Basic project information.
     MainGraph graph = 3;                // Main audio topology map.
     bytes tempoEvents = 4;              // List of tempo and beat labels. As MIDI events.
+    bytes extendData = 5;               // Extended data.
 }
