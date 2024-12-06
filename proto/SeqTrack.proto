@@ -5,11 +5,6 @@ import "Utils.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
-message SeqTrackInfo {
-    string name = 1;			// Track name.
-    fixed32 color = 2;			// Track color. In ARGB.
-}
-
 message SeqSourceInstance {
 	double startPos = 1;		// Instance start seconds in the sequence track.
 	double endPos = 2;			// Instance end seconds in the sequence track.
@@ -26,17 +21,13 @@ message SourceInfo {
 }
 
 message SeqTrack {
-	TrackType type = 1;					// Track audio bus type.
-    SeqTrackInfo info = 2;				// Track basic information.
-	bool bypassed = 3;					// Track bypass switch.
+	SourceInstanceList sources = 1;		// List of data source instances.
 
-	SourceInstanceList sources = 4;		// List of data source instances.
+	string midiSrc = 2;					// MIDI source file name.
+	uint32 midiTrack = 3;				// MIDI source track index used.
+	string audioSrc = 4;				// Audio source file name.
 
-	string midiSrc = 5;					// MIDI source file name.
-	uint32 midiTrack = 12;				// MIDI source track index used.
-	string audioSrc = 6;				// Audio source file name.
-
-	SourceInfo sourceInfo = 13;			// Basic information of the data source.
+	SourceInfo sourceInfo = 5;			// Basic information of the data source.
 										// Only used to provide correct source information to the ARA plugin 
 										// before the end of source file reading to ensure correct ARA synchronization.
 
@@ -50,13 +41,9 @@ message SeqTrack {
 		AUDIO_INSERT_MODE = 0x10;		// Add audio data into current audio channels.
 		AUDIO_COVER_MODE = 0x20;		// Replace audio data.
 	}
-	//uint32 recCompensate = 7;
-	//bool recording = 9;					// Track recording switch.
-	RecordState recordState = 14;		// Track recording state.
-	bool inputMonitoring = 15;			// Track input monitoring.
-	bool muted = 11;					// Track mute switch.
-	bool solo = 16;						// Track solo switch.
+	RecordState recordState = 6;		// Track recording state.
+	bool inputMonitoring = 7;			// Track input monitoring.
 
 	Plugin instr = 8;					// Track instruments or ARA plugins.
-	bool offline = 10;					// Track instruments offline.
+	bool offline = 9;					// Track instruments offline.
 }

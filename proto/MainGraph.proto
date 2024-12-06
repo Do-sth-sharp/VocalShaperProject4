@@ -1,25 +1,11 @@
 ﻿syntax = "proto3";
 
-import "SeqTrack.proto";
-import "MixerTrack.proto";
-import "Utils.proto";
+import "Track.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 
 message MainGraph {
-	repeated SeqTrack seqTracks = 1;			// Sequencer track list.
-	repeated MixerTrack mixerTracks = 2;		// Mixer track list.
-
-	message Connections {
-		repeated MIDIInputConnection midiI2Src = 8;				// MIDI connections from input devices to sequencer tracks.
-		repeated AudioInputConnection audioI2Src = 9;			// Audio connections from input devices to sequencer tracks.
-		repeated MIDISendConnection midiSrc2Track = 1;			// MIDI connections from sequencer tracks to mixer tracks.
-		repeated AudioSendConnection audioSrc2Track = 2;		// Audio connections from sequencer tracks to mixer tracks.
-		repeated MIDIInputConnection midiI2Track = 3;			// MIDI connections from input devices to mixer tracks.
-		repeated AudioInputConnection audioI2Track = 4;			// Audio connections from input devices to mixer tracks.
-		repeated AudioOutputConnection audioTrack2O = 5;		// Audio connections from mixer tracks to output devices.
-		repeated AudioSendConnection audioTrack2Track = 6;		// Audio connections from mixer tracks to other mixer tracks.
-		repeated MIDIOutputConnection midiTrack2O = 7;			// MIDI connections from mixer tracks to output devices.
-	}
-	Connections connections = 3;				// Connection lists.
+	repeated Track tracks = 1;					// Sequencer track list.
+	repeated Track auxTracks = 2;				// AUX track list.
+	Track masterTrack = 3;						// Master track.
 }

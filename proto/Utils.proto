@@ -8,7 +8,7 @@ message Version {
     uint32 patch = 3;
 }
 
-enum TrackType {
+enum BusType {
     DISABLED = 0;
     MONO = 10;
     STEREO = 20;
@@ -53,33 +53,24 @@ enum TrackType {
     AMBISONIC_7 = 107;
 }
 
-message MIDIInputConnection {
-	uint32 dst = 1;
-}
-
-message MIDIOutputConnection {
-	uint32 src = 1;
+enum SendDstType {
+    DEVICE = 0;
+    MASTER = 1;
+    AUX = 2;
 }
 
 message MIDISendConnection {
-	uint32 src = 1;
+    SendDstType type = 1;
 	uint32 dst = 2;
 }
 
 message AudioInputConnection {
 	uint32 srcChannel = 1;
-	uint32 dst = 2;
-	uint32 dstChannel = 3;
-}
-
-message AudioOutputConnection {
-	uint32 src = 1;
-	uint32 srcChannel = 2;
 	uint32 dstChannel = 3;
 }
 
 message AudioSendConnection {
-	uint32 src = 1;
+    SendDstType type = 1;
 	uint32 srcChannel = 2;
 	uint32 dst = 3;
 	uint32 dstChannel = 4;

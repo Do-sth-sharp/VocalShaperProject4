@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "SeqTrack.proto";
+import "MixerTrack.proto";
+import "Utils.proto";
+
+package org.vocalsharp.vocalshaper.vsp4;
+
+message TrackInfo {
+    string name = 1;			// Track name.
+    fixed32 color = 2;			// Track color. In ARGB.
+}
+
+enum TrackType {
+    TRACK = 0;
+    AUX = 1;
+    MASTER = 2;
+}
+
+message Track {
+    TrackType type = 1;                 // Track type.
+    BusType bus = 2;					// Track audio bus type.
+    SeqTrackInfo info = 3;				// Track basic information.
+
+    SeqTrack seqTrack = 4;              // Sequencer part of the track. AUX or Master track don't have this part.
+    MixerTrack mixerTrack = 5;          // Mixer part of the track.
+
+    bool mute = 6;					// Track mute switch.
+	bool solo = 7;					// Track solo switch.
+
+    uint32 additionalBuses = 8;		// Number of track side chain buses.
+
+    bool midiInput = 9;                                 // MIDI input from device.
+    repeated AudioInputConnection audioInput = 10;      // Audio input from device.
+    repeated MIDISendConnection midiSend = 11;          // MIDI send to device or tracks.
+    repeated AudioSendConnection audioSend = 12;        // Audio send to device or tracks.
+}
