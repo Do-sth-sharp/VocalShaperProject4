@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 import "Plugin.proto";
-import "Utils.proto";
 
 package org.vocalsharp.vocalshaper.vsp4;
 

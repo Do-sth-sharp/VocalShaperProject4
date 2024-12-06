@@ -20,7 +20,7 @@ enum TrackType {
 message Track {
     TrackType type = 1;                 // Track type.
     BusType bus = 2;					// Track audio bus type.
-    SeqTrackInfo info = 3;				// Track basic information.
+    TrackInfo info = 3;				    // Track basic information.
 
     SeqTrack seqTrack = 4;              // Sequencer part of the track. AUX or Master track don't have this part.
     MixerTrack mixerTrack = 5;          // Mixer part of the track.
