@@ -19,10 +19,10 @@ message ProjectInfo {
 
 message Project {
     Version version = 1;                // The application version used to save this project.
-    Version minVersionSupported = 5;    // The minimum application version that can be used to read this project.
+    Version minVersionSupported = 2;    // The minimum application version that can be used to read this project.
 
-    ProjectInfo info = 2;               // Basic project information.
-    MainGraph graph = 3;                // Main audio topology map.
-    bytes tempoEvents = 4;              // List of tempo and beat labels. As MIDI events.
-    bytes extendData = 5;               // Extended data.
+    ProjectInfo info = 3;               // Basic project information.
+    MainGraph graph = 4;                // Main audio topology map.
+    bytes tempoEvents = 5;              // List of tempo and beat labels. As MIDI events.
+    bytes extendData = 6;               // Extended data.
 }
