@@ -61,8 +61,8 @@ enum SendDstType {
 
 message MIDISendConnection {
     SendDstType type = 1;
-	int32 dst = 2;
-    int32 slot = 3;
+	uint32 dst = 2;
+    uint32 slot = 3;
 }
 
 message AudioInputConnection {
@@ -72,8 +72,8 @@ message AudioInputConnection {
 
 message AudioSendConnection {
     SendDstType type = 1;
-    int32 dst = 2;
-    int32 slot = 3;
+    uint32 dst = 2;
+    uint32 slot = 3;
 	uint32 srcChannel = 4;
 	uint32 dstChannel = 5;
 }
