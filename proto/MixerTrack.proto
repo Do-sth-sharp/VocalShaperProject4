@@ -9,8 +9,8 @@ message PluginDock {
 }
 
 message MixerTrack {
-	PluginDock effects = 2;			// Effect container.
-	double gain = 3;				// Track input gain size.
-	double panner = 4;				// Track input panner.
-	double slider = 5;				// Track output fader.
+	PluginDock effects = 1;			// Effect container.
+	double gain = 2;				// Track input gain size.
+	double panner = 3;				// Track input panner.
+	double fader = 4;				// Track output fader.
 }
