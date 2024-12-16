@@ -5,7 +5,7 @@ import "Plugin.proto";
 package org.vocalsharp.vocalshaper.vsp4;
 
 message PluginDock {
-	repeated Plugin plugins = 1;	// List of effects plugin.
+	map<uint32, Plugin> plugins = 1;	// List of effects plugin.
 }
 
 message MixerTrack {
